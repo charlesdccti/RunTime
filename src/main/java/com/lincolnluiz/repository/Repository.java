@@ -1,7 +1,8 @@
 package com.lincolnluiz.repository;
 
-public interface Repository<Entidade> {
+import org.springframework.data.repository.PagingAndSortingRepository;
+
+public interface Repository<Entidade> extends PagingAndSortingRepository<Entidade, Long> {
 	
-	Entidade save(Entidade entidade);
 
 }

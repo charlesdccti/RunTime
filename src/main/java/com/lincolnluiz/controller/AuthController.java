@@ -23,7 +23,7 @@ public class AuthController {
 		Usuario usuario = new Usuario();
 		usuario.setEmail(email);
 		
-		usuario.setSenha(authService.gerarToken(usuario));
+		usuario.setSenha(authService.authentication(usuario));
 		
 		return usuario;
 	}

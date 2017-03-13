@@ -2,8 +2,6 @@ package com.lincolnluiz.service;
 
 import com.lincolnluiz.entity.Usuario;
 
-public interface AuthService {
-	
-	String authentication(Usuario usuario);
+public interface IUsuarioService extends Service<Usuario> {
 
 }
