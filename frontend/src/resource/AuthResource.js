@@ -10,6 +10,10 @@ class AuthResource extends AbstractResource {
         return axios.post(this.path, {parans : {email : email, senha : senha }});
     }
 
+    cadastrar(usuario) {
+        return axios.post(this.path + '/cadastrar', usuario);
+    }
+
 }
 
 export default new AuthResource;

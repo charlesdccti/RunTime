@@ -17,6 +17,7 @@ public class GlobalExceptionHandler {
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(value = RuntimeException.class)
 	public @ResponseBody ApiError handleException(RuntimeException ex) {
+		
 		ApiError error = new ApiError();
 		error.setStatus(400);
 		error.setMessage(ex.getMessage());
@@ -27,8 +28,11 @@ public class GlobalExceptionHandler {
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(value = ConstraintViolationException.class)
 	public @ResponseBody ApiError handleException(ConstraintViolationException ex) {
+		
 		ApiError error = new ApiError();
 		error.setStatus(400);
+		
+		//for (ConstraintViolationException constraintViolationException : ex.getConstraintViolations())
 		error.setMessage(ex.getMessage());
 		
 		return error;
@@ -37,6 +41,7 @@ public class GlobalExceptionHandler {
 	@ResponseStatus(HttpStatus.FORBIDDEN)
 	@ExceptionHandler(value = AccessDeniedException.class)
 	public @ResponseBody ApiError handleException(AccessDeniedException ex) {
+		
 		ApiError error = new ApiError();
 		error.setStatus(HttpStatus.FORBIDDEN.value());
 		error.setMessage(ex.getMessage());

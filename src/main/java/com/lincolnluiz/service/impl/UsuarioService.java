@@ -1,11 +1,13 @@
-package com.lincolnluiz.service;
+package com.lincolnluiz.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Service;
 
 import com.lincolnluiz.entity.Usuario;
-import com.lincolnluiz.repository.Repository;
 import com.lincolnluiz.repository.UsuarioRepository;
+import com.lincolnluiz.service.AbstractService;
+import com.lincolnluiz.service.IUsuarioService;
 
 @Service
 public class UsuarioService extends AbstractService<Usuario> implements IUsuarioService {
@@ -13,10 +15,8 @@ public class UsuarioService extends AbstractService<Usuario> implements IUsuario
 	@Autowired UsuarioRepository usuarioRepository;
 	
 	@Override
-	Repository<Usuario> getRepository() {
+	public PagingAndSortingRepository<Usuario, Long> getRepository() {
 		return usuarioRepository;
 	}
-	
-	
 	
 }

@@ -3,18 +3,22 @@ package com.lincolnluiz.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lincolnluiz.entity.Usuario;
 import com.lincolnluiz.service.AuthService;
+import com.lincolnluiz.service.IUsuarioService;
 
 @RestController
 @RequestMapping(value = "api/auth")
 public class AuthController {
 	
 	@Autowired AuthService authService;
+	
+	@Autowired IUsuarioService usuarioService;
 
 	@RequestMapping(method = RequestMethod.POST)
 	public Usuario authentication(@Param(value = "email") String email,
@@ -26,6 +30,11 @@ public class AuthController {
 		usuario.setSenha(authService.authentication(usuario));
 		
 		return usuario;
+	}
+	
+	@RequestMapping(value = "cadastrar", method = RequestMethod.POST)
+	public Usuario cadastrar(@RequestBody Usuario usuario) {
+		return usuarioService.save(usuario);
 	}
 	
 	@RequestMapping(value = "token", method = RequestMethod.GET)

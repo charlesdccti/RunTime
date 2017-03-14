@@ -9,7 +9,7 @@ export default class AbstractResource {
     }
 
     save(object) {
-        return axios.post('auth', object);
+        return axios.post(this.path, object);
     }
 
 }
