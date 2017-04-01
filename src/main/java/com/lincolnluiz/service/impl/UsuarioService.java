@@ -18,5 +18,5 @@ public class UsuarioService extends AbstractService<Usuario> implements IUsuario
 	public PagingAndSortingRepository<Usuario, Long> getRepository() {
 		return usuarioRepository;
 	}
-	
+
 }

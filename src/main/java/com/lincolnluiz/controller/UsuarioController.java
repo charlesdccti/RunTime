@@ -1,6 +1,7 @@
 package com.lincolnluiz.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,6 +17,7 @@ public class UsuarioController {
 	@Autowired IUsuarioService usuarioService;
 	
 	@RequestMapping(method = RequestMethod.GET)
+	@Secured("ROLE_UAL")
 	public Usuario get() {
 		return null;
 	}

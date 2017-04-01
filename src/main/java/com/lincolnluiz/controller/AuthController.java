@@ -2,6 +2,7 @@ package com.lincolnluiz.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,8 +38,9 @@ public class AuthController {
 		return usuarioService.save(usuario);
 	}
 	
-	@RequestMapping(value = "token", method = RequestMethod.GET)
-	public Usuario getToken(@PathVariable String oldToken) {
+	@RequestMapping(value = "token/{oldToken}", method = RequestMethod.GET)
+	@Secured("sdasdfdsa")
+	public Usuario getToken(@PathVariable(name = "oldToken") String oldToken) {
 		Usuario usuario = new Usuario();
 		
 		return usuario;

@@ -20,7 +20,7 @@ public class GlobalExceptionHandler {
 		
 		ApiError error = new ApiError();
 		error.setStatus(400);
-		error.setMessage(ex.getMessage());
+//		error.setMessage(ex.getMessage());
 		
 		return error;
 	}
@@ -33,7 +33,7 @@ public class GlobalExceptionHandler {
 		error.setStatus(400);
 		
 		//for (ConstraintViolationException constraintViolationException : ex.getConstraintViolations())
-		error.setMessage(ex.getMessage());
+//		error.setMessage(ex.getMessage());
 		
 		return error;
 	}
@@ -44,7 +44,7 @@ public class GlobalExceptionHandler {
 		
 		ApiError error = new ApiError();
 		error.setStatus(HttpStatus.FORBIDDEN.value());
-		error.setMessage(ex.getMessage());
+//		error.setMessage(ex.getMessage());
 		
 		return error;
 	}

@@ -26,9 +26,8 @@
 
 <template>
     <div>
-        <img src="./assets/img/logotipo_xs.png" />
-        <h2 style="text-align: center">Te amo Ingrat</h2>
-        <h2 style="text-align: center">Teste de reload Novo asdkflsakjfd</h2>
+        <img src="./assets/img/logotipo_xs.png" />>
+        <h2 style="text-align: center">Teste de reload</h2>
         <button @click="get" class="btn btn-default"><span class="glyphicon glyphicon-heart"></span> testar</button>
         <i class="fa fa-home"></i>
         
