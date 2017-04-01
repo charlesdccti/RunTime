@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -7,7 +8,8 @@ import { PasswordComponent } from './components/password/password.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
   ],
   declarations: [LoginComponent, RegisterComponent, PasswordComponent],
   providers: [AuthService]

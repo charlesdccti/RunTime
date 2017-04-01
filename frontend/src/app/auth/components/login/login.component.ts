@@ -13,7 +13,8 @@ export class LoginComponent {
   constructor() { }
 
   login() {
-
+    console.log(this.usuario);
+    console.log("asdasdf");
   }
 
 }
