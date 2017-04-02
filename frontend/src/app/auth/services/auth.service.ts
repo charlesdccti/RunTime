@@ -5,13 +5,13 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class AuthService {
 
-  private auth : Auth;
+  private auth : Auth = new Auth();
 
   constructor() { }
 
   login(email : string, senha : string) {
     let usuario : Usuario = new Usuario();
-    usuario.email = "licnoln@gmail.com";
+    usuario.email = email;
     usuario.token = "alksdkjlfsad043i83jlro9fjlflkjdffdf";
     
     localStorage.setItem('user', JSON.stringify(usuario));

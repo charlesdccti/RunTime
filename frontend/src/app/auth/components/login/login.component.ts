@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { Usuario } from './../../models/usuario';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,11 +11,12 @@ export class LoginComponent {
 
   usuario : Usuario = new Usuario();
 
-  constructor() { }
+  constructor(private authService : AuthService) { }
 
   login() {
-    console.log(this.usuario);
-    console.log("asdasdf");
+    this.authService.login(this.usuario.email, this.usuario.senha);
+
+    console.log(this.authService.getUsuario());
   }
 
 }

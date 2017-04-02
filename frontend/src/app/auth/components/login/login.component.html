@@ -4,24 +4,26 @@
       <img src="assets/img/logotipo_md.png" class="img-responsive center-block" />
     </div>
 
-    <form (onSubmit)="login()" #form="ngForm">
       <div class="login-box">
-        <input [(ngModel)]="usuario.email" type="text" class="form-control" name="email" placeholder="Email" required autofocus />
-        <br/>
-        <input [(ngModel)]="usuario.senha" type="password" class="form-control" name="senha" placeholder="Senha" required />
+        <form (ngSubmit)="login()" #form="ngForm">
+          <input [(ngModel)]="usuario.email" type="text" class="form-control" name="email" placeholder="Email" required autofocus />
+          <br/>
+          <input [(ngModel)]="usuario.senha" type="password" class="form-control" name="senha" placeholder="Senha" required />
 
-        <div class="text-right">
-          <a routerLink="password">Esqueceu sua senha?</a>
-        </div>
+          <div class="text-right">
+            <a routerLink="/password">Esqueceu sua senha?</a>
+          </div>
 
-        <br/>
-        <button [disabled]="!form.form.valid" class="btn btn-primary" type="submit">Entrar</button>
+          <br/>
+          <button class="btn btn-primary" type="submit">Entrar</button>
+
+        </form>
 
         <hr/> Não tem uma conta? Cria sua conta, é gratis!
         <br/><br/>
-        <a routerLink="register" class="btn btn-default">Crie sua Conta!</a>
+        <a routerLink="/register" class="btn btn-default">Crie sua Conta!</a>
+
       </div>
-    </form>
   </div>
 
 </div>
