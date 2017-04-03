@@ -1,0 +1,8 @@
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+    cursor: default;
+}
+label {
+    display: block;
+    text-align: left;
+    font-weight: normal;
+}

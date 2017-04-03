@@ -1,3 +1,39 @@
-<p>
-  register works!
-</p>
+<div class="login">
+    <div class="login-header">
+        <img src="assets/img/logotipo_md.png" class="img-responsive center-block" />
+
+        <h3>Cadastre-se e constrole suas tarefas!</h3>
+    </div>
+
+    <div class="login-box">
+        <form (ngSubmit)="cadastrar()" #form="ngForm">
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input [(ngModel)]="usuario.nome" name="nome" type="text" id="nome"
+                class="form-control" placeholder="Nome" required autofocus #nome="ngModel" />
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input [(ngModel)]="usuario.email" name="email" type="email" id="email"
+                    class="form-control" placeholder="Email" required #email="ngModel" email="true" />
+
+                <div *ngIf="form.submitted && !email.valid" class="alert alert-danger">
+                    Digite um email válido.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input [(ngModel)]="usuario.senha" name="senha" type="password" id="senha"
+                    class="form-control" v-model="senha" placeholder="Senha" required />
+            </div>
+
+            <br/>
+            
+            <button [disabled]="!form.valid" class="btn btn-success" type="submit">Cadastrar</button>
+            <hr/>
+            Você já tem uma conta? <a routerLink="/login">Faça seu login.</a>
+        </form>
+    </div>
+</div>

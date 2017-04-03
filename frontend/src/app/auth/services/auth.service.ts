@@ -25,7 +25,8 @@ export class AuthService {
   }
 
   registrar(usuario : Usuario) {
-
+    console.log(usuario);
+    this.login(usuario.email, usuario.senha);
   }
 
   enviarRecuperacaoDeSenha(email : string) {

@@ -1,29 +1,37 @@
 <div>
-  <div class="login">
-    <div class="login-header">
-      <img src="assets/img/logotipo_md.png" class="img-responsive center-block" />
+    <div class="login">
+        <div class="login-header">
+            <img src="assets/img/logotipo_md.png" class="img-responsive center-block" />
+        </div>
+
+        <div class="login-box">
+            <form (ngSubmit)="login()" #form="ngForm">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input [(ngModel)]="usuario.email" type="text" class="form-control"
+                        name="email" placeholder="Email" required autofocus email="true" />
+                </div>
+
+                <div class="form-group">
+                    <label for="senha">Senha</label>
+                    <input [(ngModel)]="usuario.senha" type="password" class="form-control"
+                        name="senha" placeholder="Senha" required />
+                </div>
+
+                <div class="text-right">
+                    <a routerLink="/password">Esqueceu sua senha?</a>
+                </div>
+
+                <br/>
+                <button [disabled]="!form.valid" class="btn btn-primary" type="submit">Entrar</button>
+
+            </form>
+
+            <hr/> Não tem uma conta? Cria sua conta, é gratis!
+            <br/><br/>
+            <a routerLink="/register" class="btn btn-default">Crie sua Conta!</a>
+
+        </div>
     </div>
-
-      <div class="login-box">
-        <form (ngSubmit)="login()" #form="ngForm">
-          <input [(ngModel)]="usuario.email" type="text" class="form-control" name="email" placeholder="Email" required autofocus />
-          <br/>
-          <input [(ngModel)]="usuario.senha" type="password" class="form-control" name="senha" placeholder="Senha" required />
-
-          <div class="text-right">
-            <a routerLink="/password">Esqueceu sua senha?</a>
-          </div>
-
-          <br/>
-          <button class="btn btn-primary" type="submit">Entrar</button>
-
-        </form>
-
-        <hr/> Não tem uma conta? Cria sua conta, é gratis!
-        <br/><br/>
-        <a routerLink="/register" class="btn btn-default">Crie sua Conta!</a>
-
-      </div>
-  </div>
 
 </div>
