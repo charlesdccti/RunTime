@@ -13,7 +13,6 @@ import { PasswordComponent } from './components/password/password.component';
     FormsModule,
     RouterModule
   ],
-  declarations: [LoginComponent, RegisterComponent, PasswordComponent],
-  providers: [AuthService]
+  declarations: [LoginComponent, RegisterComponent, PasswordComponent]
 })
 export class AuthModule { }

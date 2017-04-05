@@ -1,3 +1,6 @@
+import { DashboardModule } from './dashboard/dashboard.module';
+import { AtividadeService } from './dashboard/services/atividade.service';
+import { AuthService } from './auth/services/auth.service';
 import { AppRoutes } from './app.routes';
 import { LoginComponent } from './auth/components/login/login.component';
 import { AuthModule } from './auth/auth.module';
@@ -18,9 +21,10 @@ import { AppComponent } from './app.component';
     FormsModule,
     HttpModule,
     AuthModule,
+    DashboardModule,
     RouterModule.forRoot(AppRoutes),
   ],
-  providers: [],
+  providers: [AuthService, AtividadeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
