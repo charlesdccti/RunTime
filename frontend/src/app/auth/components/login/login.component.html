@@ -23,8 +23,7 @@
                 </div>
 
                 <br/>
-                <button [disabled]="!form.valid" class="btn btn-primary" type="submit">Entrar</button>
-
+                <button (click)="form.onSubmit()" [disabled]="!form.valid" class="btn btn-primary" type="submit">Entrar</button>
             </form>
 
             <hr/> Não tem uma conta? Cria sua conta, é gratis!

@@ -9,7 +9,7 @@
                 </div>
                 <div class="col-lg-4 col-xs-10 pull-right text-right">
                     <div class="dropdown">
-                        <button href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">{{ authService.getUsuario().nome }} <span class="caret"></span></button>
+                        <button href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">{{ authService.getUsuario().email }} <span class="caret"></span></button>
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li><a href="#">Alterar Senha</a></li>
                             <li><a (click)="authService.logout()">Sair</a></li>

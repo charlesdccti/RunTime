@@ -15,10 +15,14 @@ export class LoginComponent {
     constructor(private authService: AuthService, private router: Router) { }
 
     login() {
-        this.authService.login(this.usuario.email, this.usuario.senha);
-
-        console.log(this.authService.getUsuario());
-        this.router.navigateByUrl('/app');
+        
+        this.authService.login(this.usuario.email, this.usuario.senha)
+            .then(
+                (response) => {
+                    console.log(this.authService.getUsuario());
+                    this.router.navigateByUrl('/app');
+                }
+            );
     }
 
 }

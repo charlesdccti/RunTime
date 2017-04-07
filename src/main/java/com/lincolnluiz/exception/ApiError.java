@@ -1,5 +1,6 @@
 package com.lincolnluiz.exception;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ApiError {
@@ -16,8 +17,9 @@ public class ApiError {
 	public List<String> getMessage() {
 		return message;
 	}
-	public void setMessage(List<String> message) {
-		this.message = message;
+	public void addMessage(String texto) {
+		if (this.message == null) this.message = new ArrayList<String>();
+		this.message.add(texto);
 	}
 	
 }

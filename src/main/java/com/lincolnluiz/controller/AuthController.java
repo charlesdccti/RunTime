@@ -1,5 +1,8 @@
 package com.lincolnluiz.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.security.access.annotation.Secured;
@@ -28,9 +31,14 @@ public class AuthController {
 		Usuario usuario = new Usuario();
 		usuario.setEmail(email);
 		
-		usuario.setSenha(authService.authentication(usuario));
+		usuario.setToken(authService.authentication(usuario));
 		
 		return usuario;
+	}
+	
+	@RequestMapping(method = RequestMethod.GET)
+	public Usuario getList() {
+		return new Usuario();
 	}
 	
 	@RequestMapping(value = "cadastrar", method = RequestMethod.POST)

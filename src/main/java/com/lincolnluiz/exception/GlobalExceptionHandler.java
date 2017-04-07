@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.google.common.base.Throwables;
+
 @ControllerAdvice
 @RestController
 public class GlobalExceptionHandler {
@@ -17,10 +19,11 @@ public class GlobalExceptionHandler {
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(value = RuntimeException.class)
 	public @ResponseBody ApiError handleException(RuntimeException ex) {
+		ex.printStackTrace();
 		
 		ApiError error = new ApiError();
 		error.setStatus(400);
-//		error.setMessage(ex.getMessage());
+		error.addMessage(Throwables.getStackTraceAsString(ex));
 		
 		return error;
 	}

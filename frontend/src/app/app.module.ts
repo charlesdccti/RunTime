@@ -1,3 +1,4 @@
+import { HttpService } from './core/services/http-service';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { AtividadeService } from './dashboard/services/atividade.service';
 import { AuthService } from './auth/services/auth.service';
@@ -9,6 +10,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { Http } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
@@ -24,7 +26,7 @@ import { AppComponent } from './app.component';
     DashboardModule,
     RouterModule.forRoot(AppRoutes),
   ],
-  providers: [AuthService, AtividadeService],
+  providers: [AuthService, AtividadeService, { provide: Http, useClass: HttpService }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

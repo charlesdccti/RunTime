@@ -1,3 +1,4 @@
+import { CoreModule } from './../core/core.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
@@ -11,7 +12,8 @@ import { PasswordComponent } from './components/password/password.component';
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    CoreModule
   ],
   declarations: [LoginComponent, RegisterComponent, PasswordComponent]
 })
