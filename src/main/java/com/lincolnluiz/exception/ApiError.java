@@ -5,21 +5,19 @@ import java.util.List;
 
 public class ApiError {
 
-	private Integer status;
-	private List<String> message;
+	private List<ApiErrorMessage> messages;
 	
-	public Integer getStatus() {
-		return status;
+	public List<ApiErrorMessage> getMessages() {
+		return messages;
 	}
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
-	public List<String> getMessage() {
-		return message;
-	}
-	public void addMessage(String texto) {
-		if (this.message == null) this.message = new ArrayList<String>();
-		this.message.add(texto);
+	public void addMessage(String titulo, String texto) {
+		if (this.messages == null) this.messages = new ArrayList<ApiErrorMessage>();
+		
+		ApiErrorMessage apiErrorMessage = new ApiErrorMessage();
+		apiErrorMessage.setTitle(titulo);
+		apiErrorMessage.setMessage(texto);
+		
+		this.messages.add(apiErrorMessage);
 	}
 	
 }

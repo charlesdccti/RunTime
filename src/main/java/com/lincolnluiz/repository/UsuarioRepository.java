@@ -8,4 +8,6 @@ import com.lincolnluiz.entity.Usuario;
 @Repository
 public interface UsuarioRepository extends PagingAndSortingRepository<Usuario, Long> {
 
+	public Usuario getUsuarioByEmail(String email);
+	
 }

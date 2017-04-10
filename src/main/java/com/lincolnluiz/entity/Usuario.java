@@ -13,11 +13,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.NotAudited;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
+@Audited
 @Table(name = "usuario")
 public class Usuario implements Serializable {
 
@@ -28,8 +34,16 @@ public class Usuario implements Serializable {
 	private String senha;
 	private String token;
 	private IndicadorStatus status;
+	private Long versionLock;
 	
 	private List<AutorizacaoConta> autorizacaoContaList;
+	
+	public Usuario() {}
+	
+	public Usuario(String email) {
+		super();
+		this.email = email;
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -52,6 +66,7 @@ public class Usuario implements Serializable {
 	}
 	
 	@Column(name = "senha")
+	@JsonIgnore
 	public String getSenha() {
 		return senha;
 	}
@@ -77,6 +92,7 @@ public class Usuario implements Serializable {
 	}
 	
 	@OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, orphanRemoval = true)
+	@NotAudited
 	public List<AutorizacaoConta> getAutorizacaoContaList() {
 		return autorizacaoContaList;
 	}
@@ -84,6 +100,16 @@ public class Usuario implements Serializable {
 		this.autorizacaoContaList = autorizacaoContaList;
 	}
 	
+	@Column(name = "versionLock")
+	@Version
+	public Long getVersionLock() {
+		return versionLock;
+	}
+
+	public void setVersionLock(Long versionLock) {
+		this.versionLock = versionLock;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

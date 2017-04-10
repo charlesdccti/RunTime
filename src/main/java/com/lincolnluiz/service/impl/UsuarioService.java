@@ -19,4 +19,11 @@ public class UsuarioService extends AbstractService<Usuario> implements IUsuario
 		return usuarioRepository;
 	}
 
+	@Override
+	public Usuario getUsuarioByEmail(String email) {
+		return usuarioRepository.getUsuarioByEmail(email);
+	}
+	
+	
+
 }

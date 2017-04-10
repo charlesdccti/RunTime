@@ -1,8 +1,5 @@
 package com.lincolnluiz.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.security.access.annotation.Secured;
@@ -15,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lincolnluiz.entity.Usuario;
 import com.lincolnluiz.service.AuthService;
 import com.lincolnluiz.service.IUsuarioService;
+import com.lincolnluiz.util.SegurancaUtil;
 
 @RestController
 @RequestMapping(value = "api/auth")
@@ -28,12 +26,14 @@ public class AuthController {
 	public Usuario authentication(@Param(value = "email") String email,
 			@Param(value = "senha") String senha) {
 		
-		Usuario usuario = new Usuario();
-		usuario.setEmail(email);
+		Usuario usuario = usuarioService.getUsuarioByEmail(email);
+		String senhaCriptografada = SegurancaUtil.criptografar(senha);
+		if (senhaCriptografada.equals(usuario.getSenha())) {
+			usuario.setToken(authService.authentication(usuario));
+			return usuario;
+		}
 		
-		usuario.setToken(authService.authentication(usuario));
-		
-		return usuario;
+		throw new IllegalArgumentException("Email ou senha inválido(s)");		
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)

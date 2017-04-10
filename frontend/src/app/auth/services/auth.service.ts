@@ -39,7 +39,7 @@ export class AuthService extends AbstractService {
     }
 
     logout() {
-        this.auth = null;
+        this.auth.usuario = null;
         localStorage.clear();
 
         this.router.navigateByUrl('/login');

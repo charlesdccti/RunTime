@@ -22,8 +22,7 @@ public class GlobalExceptionHandler {
 		ex.printStackTrace();
 		
 		ApiError error = new ApiError();
-		error.setStatus(400);
-		error.addMessage(Throwables.getStackTraceAsString(ex));
+		error.addMessage(ex.getMessage(), Throwables.getStackTraceAsString(ex));
 		
 		return error;
 	}
@@ -33,7 +32,6 @@ public class GlobalExceptionHandler {
 	public @ResponseBody ApiError handleException(ConstraintViolationException ex) {
 		
 		ApiError error = new ApiError();
-		error.setStatus(400);
 		
 		//for (ConstraintViolationException constraintViolationException : ex.getConstraintViolations())
 //		error.setMessage(ex.getMessage());
@@ -46,7 +44,6 @@ public class GlobalExceptionHandler {
 	public @ResponseBody ApiError handleException(AccessDeniedException ex) {
 		
 		ApiError error = new ApiError();
-		error.setStatus(HttpStatus.FORBIDDEN.value());
 //		error.setMessage(ex.getMessage());
 		
 		return error;
